@@ -110,14 +110,14 @@
                         </div>
                     </div>
                 </div>
-                <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
-                <a class="next" onclick="changeSlide(1)">&#10095;</a>
+                <a class="prev">&#10094;</a>
+                <a class="next">&#10095;</a>
             </div>
             <div class="dots-container">
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
             </div>
         </div>
     </section>
@@ -301,24 +301,34 @@
         showSlide(slideIndex);
         startAutoSlide();
 
-        function changeSlide(n) {
+        // Add event listeners for navigation arrows
+        document.querySelector('.prev').addEventListener('click', () => {
             clearTimeout(slideTimer);
-            showSlide(slideIndex += n);
+            showSlide(slideIndex += -1);
             startAutoSlide();
-        }
+        });
 
-        function currentSlide(n) {
+        document.querySelector('.next').addEventListener('click', () => {
             clearTimeout(slideTimer);
-            showSlide(slideIndex = n);
+            showSlide(slideIndex += 1);
             startAutoSlide();
-        }
+        });
+
+        // Add event listeners for dots
+        document.querySelectorAll('.dot').forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                clearTimeout(slideTimer);
+                showSlide(slideIndex = index + 1);
+                startAutoSlide();
+            });
+        });
 
         function showSlide(n) {
             let slides = document.getElementsByClassName("slide");
             let dots = document.getElementsByClassName("dot");
             
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
             
             for (let i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";
