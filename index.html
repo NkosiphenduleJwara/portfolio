@@ -220,7 +220,13 @@
         const body = document.body;
 
         // Check for saved theme preference or default to light mode
-        const currentTheme = localStorage.getItem('theme') || 'light';
+        let currentTheme = 'light';
+        try {
+            currentTheme = localStorage.getItem('theme') || 'light';
+        } catch (e) {
+            // Handle localStorage access errors (private browsing, disabled storage, etc.)
+            console.warn('localStorage not available:', e);
+        }
         
         // Apply saved theme on page load
         if (currentTheme === 'dark') {
@@ -235,10 +241,18 @@
             // Update icon and save preference
             if (body.classList.contains('dark-mode')) {
                 themeIcon.textContent = '☀️';
-                localStorage.setItem('theme', 'dark');
+                try {
+                    localStorage.setItem('theme', 'dark');
+                } catch (e) {
+                    console.warn('Could not save theme preference:', e);
+                }
             } else {
                 themeIcon.textContent = '🌙';
-                localStorage.setItem('theme', 'light');
+                try {
+                    localStorage.setItem('theme', 'light');
+                } catch (e) {
+                    console.warn('Could not save theme preference:', e);
+                }
             }
         });
     </script>
