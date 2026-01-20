@@ -455,7 +455,7 @@ section {
     .nav-menu {
         flex-direction: column;
         gap: 0.5rem;
-        align-items: flex-end;
+        align-items: center;
     }
 
     .hero {
