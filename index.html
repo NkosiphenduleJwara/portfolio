@@ -12,10 +12,16 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">NJ</div>
-            <ul class="nav-menu">
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -54,6 +60,67 @@
                     by a commitment to continuous learning and delivering high-quality solutions that solve 
                     real-world problems.
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Project Gallery</h2>
+            <div class="slideshow-container">
+                <div class="slide fade">
+                    <div class="slide-content">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);">
+                            <span class="placeholder-text">Web Development</span>
+                        </div>
+                        <div class="slide-caption">
+                            <h3>Web Development</h3>
+                            <p>Modern responsive web applications</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide fade">
+                    <div class="slide-content">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #10b981 0%, #34d399 100%);">
+                            <span class="placeholder-text">Mobile Applications</span>
+                        </div>
+                        <div class="slide-caption">
+                            <h3>Mobile Applications</h3>
+                            <p>Cross-platform mobile solutions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide fade">
+                    <div class="slide-content">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);">
+                            <span class="placeholder-text">Backend Systems</span>
+                        </div>
+                        <div class="slide-caption">
+                            <h3>Backend Systems</h3>
+                            <p>Scalable server-side architecture</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide fade">
+                    <div class="slide-content">
+                        <div class="placeholder-img" style="background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);">
+                            <span class="placeholder-text">Data Analytics</span>
+                        </div>
+                        <div class="slide-caption">
+                            <h3>Data Analytics</h3>
+                            <p>Insights through data visualization</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="prev">&#10094;</a>
+                <a class="next">&#10095;</a>
+            </div>
+            <div class="dots-container">
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
             </div>
         </div>
     </section>
@@ -255,6 +322,81 @@
                 }
             }
         });
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Gallery slideshow functionality
+        let slideIndex = 1;
+        let slideTimer;
+
+        showSlide(slideIndex);
+        startAutoSlide();
+
+        // Add event listeners for navigation arrows
+        document.querySelector('.prev').addEventListener('click', () => {
+            clearTimeout(slideTimer);
+            showSlide(slideIndex += -1);
+            startAutoSlide();
+        });
+
+        document.querySelector('.next').addEventListener('click', () => {
+            clearTimeout(slideTimer);
+            showSlide(slideIndex += 1);
+            startAutoSlide();
+        });
+
+        // Add event listeners for dots
+        document.querySelectorAll('.dot').forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                clearTimeout(slideTimer);
+                showSlide(slideIndex = index + 1);
+                startAutoSlide();
+            });
+        });
+
+        function showSlide(n) {
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            
+            if (slides.length > 0 && dots.length > 0) {
+                slides[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " active";
+            }
+        }
+
+        function startAutoSlide() {
+            slideTimer = setTimeout(() => {
+                slideIndex++;
+                showSlide(slideIndex);
+                startAutoSlide();
+            }, 5000); // Change slide every 5 seconds
+        }
     </script>
 </body>
 </html>
