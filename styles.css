@@ -604,6 +604,8 @@ section {
 @media (max-width: 768px) {
     .navbar .container {
         flex-wrap: wrap;
+    }
+    
     .hamburger {
         display: flex;
     }
