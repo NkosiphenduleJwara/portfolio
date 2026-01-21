@@ -104,6 +104,8 @@ body {
 .dark-mode-toggle:hover {
     transform: scale(1.05);
     box-shadow: var(--shadow-md);
+}
+
 /* Hamburger Menu */
 .hamburger {
     display: none;
