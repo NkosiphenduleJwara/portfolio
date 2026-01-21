@@ -26,6 +26,9 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                <span id="themeIcon">🌙</span>
+            </button>
         </div>
     </nav>
 
@@ -276,6 +279,49 @@
         </div>
     </footer>
 
+    <!-- Dark Mode Script -->
+    <script>
+        // Dark mode toggle functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+
+        // Check for saved theme preference or default to light mode
+        let currentTheme = 'light';
+        try {
+            currentTheme = localStorage.getItem('theme') || 'light';
+        } catch (e) {
+            // Handle localStorage access errors (private browsing, disabled storage, etc.)
+            console.warn('localStorage not available:', e);
+        }
+        
+        // Apply saved theme on page load
+        if (currentTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeIcon.textContent = '☀️';
+        }
+
+        // Toggle dark mode
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            // Update icon and save preference
+            if (body.classList.contains('dark-mode')) {
+                themeIcon.textContent = '☀️';
+                try {
+                    localStorage.setItem('theme', 'dark');
+                } catch (e) {
+                    console.warn('Could not save theme preference:', e);
+                }
+            } else {
+                themeIcon.textContent = '🌙';
+                try {
+                    localStorage.setItem('theme', 'light');
+                } catch (e) {
+                    console.warn('Could not save theme preference:', e);
+                }
+            }
+        });
     <script>
         // Hamburger menu toggle
         const hamburger = document.getElementById('hamburger');
