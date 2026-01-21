@@ -322,7 +322,7 @@
                 }
             }
         });
-    <script>
+    // <script>
         // Hamburger menu toggle
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
@@ -372,8 +372,10 @@
         function showSlide(n) {
             let slides = document.getElementsByClassName("slide");
             let dots = document.getElementsByClassName("dot");
-            
+
+            // resets back to the first slide
             if (n > slides.length) { slideIndex = 1; }
+            
             if (n < 1) { slideIndex = slides.length; }
             
             for (let i = 0; i < slides.length; i++) {
