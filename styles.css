@@ -580,8 +580,11 @@ section {
 
 /* Footer */
 .footer {
-    background-color: var(--text-dark);
-    color: white;
+    /* background-color: var(--text-dark); */
+    
+    background-color: var(--background-white);
+    box-shadow: var(--shadow-sm);
+    /* color: white; */
     text-align: center;
     padding: 2rem 0;
 }
