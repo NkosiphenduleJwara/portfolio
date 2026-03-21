@@ -514,6 +514,267 @@ section {
     font-size: 0.9rem;
 }
 
+/* Recent Updates / LinkedIn Post Section */
+.updates {
+    background-color: var(--background-light);
+}
+
+.linkedin-post-container {
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.linkedin-post {
+    background-color: var(--background-white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.linkedin-post:hover {
+    box-shadow: var(--shadow-xl);
+}
+
+/* Post Header */
+.post-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1.25rem 1.25rem 0;
+}
+
+.post-author-avatar {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+}
+
+.post-author-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.post-author-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.3;
+    margin-bottom: 0.15rem;
+}
+
+.post-author-title {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    line-height: 1.4;
+    margin-bottom: 0.15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.post-date {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.post-visibility {
+    font-size: 0.8rem;
+}
+
+.linkedin-follow-btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 5px 14px;
+    border: 1.5px solid #0077b5;
+    border-radius: 20px;
+    color: #0077b5;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+}
+
+.linkedin-follow-btn:hover {
+    background-color: #0077b5;
+    color: white;
+}
+
+/* Post Text */
+.post-content {
+    padding: 1rem 1.25rem;
+}
+
+.post-text {
+    font-size: 0.9375rem;
+    color: var(--text-dark);
+    line-height: 1.65;
+    white-space: pre-line;
+}
+
+/* Post Image */
+.post-image {
+    line-height: 0;
+}
+
+.post-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.post-image-placeholder {
+    width: 100%;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-image-text {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.92);
+    text-align: center;
+    text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.25);
+    padding: 0 1rem;
+}
+
+/* Reactions Summary Bar */
+.post-reactions-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.82rem;
+    color: var(--text-light);
+}
+
+.post-reactions-count {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.reaction-bubbles {
+    display: inline-flex;
+    align-items: center;
+}
+
+.reaction-bubble {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    margin-right: -4px;
+    border: 1.5px solid var(--background-white);
+    background-color: var(--background-light);
+}
+
+.reactions-total {
+    margin-left: 6px;
+}
+
+.reactions-total:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+.post-engagement-count {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.post-engagement-count span:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+/* Divider */
+.post-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 0 1.25rem;
+}
+
+/* Action Buttons */
+.post-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0.4rem 0.5rem;
+}
+
+.post-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.55rem 0.75rem;
+    border: none;
+    background: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text-light);
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-family: inherit;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+}
+
+.post-action-btn:hover {
+    background-color: var(--background-light);
+    color: var(--text-dark);
+}
+
+.post-action-icon {
+    font-size: 1.05rem;
+    line-height: 1;
+}
+
+.linkedin-icon {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+.post-action-btn:disabled {
+    opacity: 0.65;
+    cursor: default;
+}
+
+.post-action-link {
+    color: #0077b5;
+}
+
+.post-action-link:hover {
+    background-color: rgba(0, 119, 181, 0.1);
+    color: #005582;
+}
+
 /* Contact Section */
 .contact {
     background-color: var(--background-white);
@@ -695,6 +956,32 @@ section {
     .slide-caption p {
         font-size: 1rem;
     }
+
+    .post-author-title {
+        white-space: normal;
+    }
+
+    .post-actions {
+        justify-content: space-between;
+        padding: 0.4rem 0.25rem;
+    }
+
+    .post-action-btn span:last-child {
+        display: none;
+    }
+
+    .post-action-btn {
+        padding: 0.55rem 0.6rem;
+    }
+
+    .post-action-icon {
+        font-size: 1.2rem;
+    }
+
+    .linkedin-icon {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -742,5 +1029,13 @@ section {
     .prev, .next {
         padding: 10px;
         font-size: 16px;
+    }
+
+    .post-image-placeholder {
+        height: 200px;
+    }
+
+    .post-image-text {
+        font-size: 1.25rem;
     }
 }
